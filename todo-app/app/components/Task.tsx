@@ -41,12 +41,11 @@ const Task: React.FC<TaskProps> = ({ task }) => {
       <td className="w-full">{task.text}</td>
 
       <td className="flex gap-5">
-        <span style={{ cursor: "pointer" }}>
-          <FiEdit
-            onClick={() => setOpenModalEdit(true)}
-            color="blue"
-            size={25}
-          />
+        <span
+          onClick={() => setOpenModalEdit(true)}
+          style={{ cursor: "pointer" }}
+        >
+          <FiEdit color="blue" size={25} />
         </span>
         <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
           <form onSubmit={handleSubmitEditTodo}>
@@ -67,12 +66,11 @@ const Task: React.FC<TaskProps> = ({ task }) => {
             </div>
           </form>
         </Modal>
-        <span style={{ cursor: "pointer" }}>
-          <FaRegTrashAlt
-            onClick={() => setOpenModalDeleted(true)}
-            color="red"
-            size={25}
-          />
+        <span
+          onClick={() => setOpenModalDeleted(true)}
+          style={{ cursor: "pointer" }}
+        >
+          <FaRegTrashAlt color="red" size={25} />
         </span>
         <Modal modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>
           <h3 className="text-lg">

@@ -8,6 +8,7 @@ export const getAllTodos = async (): Promise<ITask[]> => {
   return todos;
 };
 
+//add task
 export const addTodo = async (todo: ITask): Promise<ITask> => {
   const res = await fetch(`${baseUrl}/tasks`, {
     method: "POST",
@@ -20,6 +21,7 @@ export const addTodo = async (todo: ITask): Promise<ITask> => {
   return newTodo;
 };
 
+//edit task
 export const editTodo = async (todo: ITask): Promise<ITask> => {
   const res = await fetch(`${baseUrl}/tasks/${todo.id}`, {
     method: "PUT",
@@ -32,6 +34,7 @@ export const editTodo = async (todo: ITask): Promise<ITask> => {
   return updatedTodo;
 };
 
+//delete task
 export const deleteTodo = async (id: string): Promise<void> => {
   await fetch(`${baseUrl}/tasks/${id}`, {
     method: "DELETE",
