@@ -18,6 +18,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
   const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false);
   const [taskToEdit, setTaskToEdit] = useState<string>(task.text);
+  const [isTaskDone, setIsTaskDone] = useState<Boolean>(false);
 
   const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -36,9 +37,24 @@ const Task: React.FC<TaskProps> = ({ task }) => {
     router.refresh();
   };
 
+  const handleDoneTask = () => {
+    setIsTaskDone(!isTaskDone);
+  };
+
   return (
     <tr key={task.id}>
-      <td className="w-full">{task.text}</td>
+      <td className="w-full">
+        <input
+          type="checkbox"
+          checked={isTaskDone}
+          className="checkbox checkbox-xs mr-5 checkbox-primary"
+          onChange={handleDoneTask}
+        />
+        <span style={{ textDecoration: isTaskDone ? "line-through" : "none" }}>
+          {" "}
+          {task.text}
+        </span>
+      </td>
 
       <td className="flex gap-5">
         <span
